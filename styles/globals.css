@@ -1,0 +1,461 @@
+/* ─────────────────────────────────────────────────────────────
+   Wyrd Pharm Intake — global styles
+   Palette matches wyrdpharm-web-nine.vercel.app
+   ────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg:            #0D100E;
+  --bg-panel:      #121614;
+  --bg-panel-2:    #171B18;
+  --bg-input:      #1a1e1b;
+  --border:        rgba(237, 232, 221, 0.14);
+  --border-strong: rgba(237, 232, 221, 0.28);
+  --border-focus:  #C08A4A;
+  --text:          #EDE8DD;
+  --text-muted:    rgba(237, 232, 221, 0.72);
+  --text-dim:      rgba(237, 232, 221, 0.5);
+  --gold:          #C08A4A;
+  --gold-hi:       #D8A96E;
+  --danger:        #d47070;
+
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'Inter', system-ui, sans-serif;
+
+  --radius:   14px;
+  --radius-sm: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+}
+
+body {
+  /* Layered background: soft radial vignette + jungle photo (Unsplash) */
+  background:
+    linear-gradient(180deg, rgba(13,16,14,0.85) 0%, rgba(13,16,14,0.92) 45%, rgba(13,16,14,0.98) 100%),
+    url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1920&q=70') center/cover fixed no-repeat;
+}
+
+/* Softer fallback if the image is blocked */
+@media (prefers-reduced-data: reduce) {
+  body { background: var(--bg); }
+}
+
+a { color: var(--gold-hi); text-decoration: none; }
+a:hover { color: var(--gold); }
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+
+h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.08; }
+h2 { font-size: clamp(1.5rem, 4.5vw, 2rem); line-height: 1.2; }
+h3 { font-size: 1.15rem; font-family: var(--sans); font-weight: 500; letter-spacing: 0.01em; }
+
+.tag {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ───────── Layout ───────── */
+
+.shell {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 20px 96px;
+}
+
+@media (max-width: 480px) {
+  .shell { padding: 20px 16px 96px; }
+}
+
+.brand {
+  font-family: var(--sans);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* ───────── Card / panel ───────── */
+
+.panel {
+  background: rgba(18, 22, 20, 0.88);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 22px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+@media (min-width: 640px) {
+  .panel { padding: 40px 36px; }
+}
+
+/* ───────── Progress bar ───────── */
+
+.progress-wrap {
+  margin-bottom: 22px;
+}
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.06em;
+}
+.progress-bar {
+  height: 3px;
+  background: rgba(237, 232, 221, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+
+/* ───────── Form fields ───────── */
+
+.field {
+  margin-bottom: 22px;
+}
+
+.field-num {
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin-right: 6px;
+}
+
+.label {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.label small {
+  display: block;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.help {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  margin: -4px 0 10px;
+  line-height: 1.45;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px; /* prevents iOS zoom */
+  padding: 14px 14px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  background: #1e2320;
+}
+textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(237, 232, 221, 0.35);
+}
+
+/* ───────── Chip checkbox group ───────── */
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(237, 232, 221, 0.03);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease;
+  line-height: 1.2;
+}
+.chip:hover { border-color: var(--border-strong); color: var(--text); }
+.chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.chip.on {
+  background: rgba(192, 138, 74, 0.14);
+  border-color: var(--gold);
+  color: var(--gold-hi);
+}
+
+/* ───────── Radio (Yes/No) ───────── */
+
+.yesno {
+  display: inline-flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  padding: 3px;
+  background: rgba(237, 232, 221, 0.03);
+}
+.yesno label {
+  padding: 8px 22px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  border-radius: 999px;
+  transition: all 0.15s;
+}
+.yesno input { display: none; }
+.yesno input:checked + span,
+.yesno label.on { background: var(--gold); color: #0D100E; }
+
+/* ───────── Confirm checkbox ───────── */
+
+.confirm-box {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: rgba(237, 232, 221, 0.02);
+  cursor: pointer;
+}
+.confirm-box:hover { border-color: var(--border-strong); }
+.confirm-box input {
+  margin-top: 3px;
+  width: 20px; height: 20px;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+}
+.confirm-box.on {
+  border-color: var(--gold);
+  background: rgba(192, 138, 74, 0.06);
+}
+.confirm-box .txt {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.confirm-box.on .txt { color: var(--text); }
+
+/* ───────── Buttons ───────── */
+
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  align-items: center;
+}
+.button-row .spacer { flex: 1; }
+
+.btn {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 14px 24px;
+  border-radius: 999px;
+  cursor: pointer;
+  border: 1px solid var(--gold);
+  transition: all 0.15s ease;
+  min-height: 48px;
+  touch-action: manipulation;
+}
+.btn-primary {
+  background: var(--gold);
+  color: #0D100E;
+}
+.btn-primary:hover { background: var(--gold-hi); border-color: var(--gold-hi); }
+.btn-primary:disabled {
+  background: rgba(192, 138, 74, 0.35);
+  border-color: transparent;
+  color: rgba(13, 16, 14, 0.7);
+  cursor: not-allowed;
+}
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text-muted);
+}
+.btn-ghost:hover { color: var(--text); border-color: var(--text); }
+
+/* ───────── Section header inside step ───────── */
+
+.step-head {
+  margin-bottom: 24px;
+}
+.step-head .tag { margin-bottom: 8px; display: block; }
+.step-head p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 8px 0 0;
+}
+
+/* Divider between sub-groups */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 26px 0;
+}
+
+/* ───────── Review page ───────── */
+
+.review-section {
+  margin-bottom: 26px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+}
+.review-section:last-child { border-bottom: none; }
+.review-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+.review-section h3 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.review-edit {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+.review-edit:hover { color: var(--gold-hi); }
+.review-q {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  margin-bottom: 2px;
+  line-height: 1.35;
+}
+.review-a {
+  color: var(--text);
+  font-size: 0.98rem;
+  margin-bottom: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.review-a.empty { color: var(--text-dim); font-style: italic; font-size: 0.9rem; }
+
+/* ───────── Landing screen ───────── */
+
+.landing {
+  text-align: center;
+  padding: 44px 6px 8px;
+}
+.landing .location {
+  display: block;
+  margin-bottom: 18px;
+}
+.landing h1 { font-family: var(--serif); margin-bottom: 18px; }
+.landing .intro {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 auto 32px;
+  max-width: 520px;
+  text-align: left;
+}
+.landing .btn { margin: 0 auto; display: inline-block; }
+
+/* ───────── Success screen ───────── */
+
+.success {
+  text-align: center;
+  padding: 20px 6px;
+}
+.success .mark {
+  width: 56px; height: 56px;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+.success h2 { margin-bottom: 12px; }
+.success p { color: var(--text-muted); margin: 6px 0; }
+
+/* ───────── Utilities ───────── */
+
+.error {
+  color: var(--danger);
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+.footer-note {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  margin-top: 22px;
+  padding: 0 12px;
+  line-height: 1.5;
+}
+.required { color: var(--gold); margin-left: 2px; }
