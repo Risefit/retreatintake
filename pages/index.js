@@ -161,12 +161,17 @@ function Landing({ onStart, hasSaved }) {
       <span className="tag location">Retreat pre-arrival</span>
       <h1>Welcome</h1>
       <p className="intro">
-        We're glad you're joining us.
+        Thank you for trusting us with your healing journey with Oni, the sacred vine of wisdom.
         <br /><br />
-        Because the retreat takes place in a remote setting in the Sierra Nevada de Santa Marta in Colombia, a good picture of who's arriving lets us hold space for you well, and keep the container safe for everyone.
+        This intake form helps us understand your intentions, prepare for your unique needs, and ensure we can hold you safely during your time in Uganda. Because we are in a relatively remote location, your honesty is very important for your safety and the safety of the whole group.
         <br /><br />
-        Please take your time — around 20&#8211;30 minutes is usually plenty. Your answers save as you type on this device, so you can pause and come back later. Everything you share is treated in strict confidence.
+        All information is kept strictly confidential and is used only by our facilitation team. We may follow up with a short call if needed.
+        <br /><br />
+        We reserve the right to decline or postpone participation if we feel it is not safe for you or the group at this time.
+        <br /><br />
+        Thank you for your openness.
       </p>
+      <p className="landing-meta">Around 20&#8211;30 minutes. Your answers save as you type on this device, so you can pause and come back later.</p>
       <button className="btn btn-primary" onClick={onStart}>
         {hasSaved ? 'Continue where I left off' : 'Begin'}
       </button>
