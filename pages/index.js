@@ -159,14 +159,16 @@ function Landing({ onStart, hasSaved }) {
   return (
     <div className="panel landing">
       <span className="tag location">Retreat pre-arrival</span>
-      <h1>Intake questionnaire</h1>
+      <h1>Welcome</h1>
       <p className="intro">
-        We ask every guest to complete a comprehensive intake before attending. This is to ensure your needs are within our capacity to support, and to protect your safety and well-being — as well as that of the other guests and staff. All information is stored securely and treated in strict confidence.
+        We're glad you're joining us.
         <br /><br />
-        Please allow around 20&#8211;30 minutes. Your answers are saved on this device as you go, so you can close the page and return to finish later.
+        Because the retreat takes place in a remote setting in the Sierra Nevada de Santa Marta in Colombia, a good picture of who's arriving lets us hold space for you well, and keep the container safe for everyone.
+        <br /><br />
+        Please take your time — around 20&#8211;30 minutes is usually plenty. Your answers save as you type on this device, so you can pause and come back later. Everything you share is treated in strict confidence.
       </p>
       <button className="btn btn-primary" onClick={onStart}>
-        {hasSaved ? 'Continue where I left off' : 'Begin intake'}
+        {hasSaved ? 'Continue where I left off' : 'Begin'}
       </button>
     </div>
   );
